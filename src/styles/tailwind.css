@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary Colors */
+    --color-primary: #1B365D; /* deep-navy */
+    --color-primary-foreground: #FFFFFF; /* white */
+    
+    /* Secondary Colors */
+    --color-secondary: #2C5282; /* steel-blue */
+    --color-secondary-foreground: #FFFFFF; /* white */
+    
+    /* Accent Colors */
+    --color-accent: #FF6B35; /* vibrant-orange */
+    --color-accent-foreground: #FFFFFF; /* white */
+    
+    /* Background Colors */
+    --color-background: #FAFAFA; /* gray-50 */
+    --color-foreground: #1A202C; /* gray-900 */
+    
+    /* Surface Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #1A202C; /* gray-900 */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #1A202C; /* gray-900 */
+    
+    /* Muted Colors */
+    --color-muted: #F7FAFC; /* gray-100 */
+    --color-muted-foreground: #4A5568; /* gray-600 */
+    
+    /* Border and Input */
+    --color-border: #E2E8F0; /* gray-300 */
+    --color-input: #FFFFFF; /* white */
+    --color-ring: #FF6B35; /* vibrant-orange */
+    
+    /* Status Colors */
+    --color-success: #38A169; /* green-600 */
+    --color-success-foreground: #FFFFFF; /* white */
+    --color-warning: #D69E2E; /* yellow-600 */
+    --color-warning-foreground: #FFFFFF; /* white */
+    --color-error: #E53E3E; /* red-600 */
+    --color-error-foreground: #FFFFFF; /* white */
+    --color-destructive: #E53E3E; /* red-600 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    
+    /* Additional Brand Colors */
+    --color-infrastructure-navy: #1B365D; /* deep-navy */
+    --color-steel-blue: #2C5F7C; /* steel-blue-authority */
+    --color-innovation-orange: #FF6B35; /* vibrant-orange */
+    --color-safety-green: #28A745; /* green-600 */
+    --color-technical-gray: #6C757D; /* gray-500 */
+    --color-professional-charcoal: #212529; /* gray-800 */
+    --color-urgent-red: #DC3545; /* red-600 */
+    
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+    
+    /* Spacing */
+    --spacing-unit: 8px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-default: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(27, 54, 93, 0.15);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    /* Border Radius */
+    --radius: 8px;
+    
+    /* Animations */
+    --transition-default: 300ms ease-out;
+    --transition-fast: 200ms ease-in-out;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+  
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+@layer components {
+  /* Animation Classes */
+  .animate-pulse-slow {
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  /* Custom Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Utility Classes */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .backdrop-blur-light {
+    backdrop-filter: blur(8px);
+  }
+  
+  .gradient-overlay {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  }
+  
+  .gradient-overlay-subtle {
+    background: linear-gradient(135deg, rgba(27, 54, 93, 0.8) 0%, rgba(255, 107, 53, 0.8) 100%);
+  }
+}
+
+@layer utilities {
+  /* Custom spacing based on 8px grid */
+  .space-unit {
+    margin: var(--spacing-unit);
+  }
+  
+  .space-unit-2 {
+    margin: calc(var(--spacing-unit) * 2);
+  }
+  
+  .space-unit-3 {
+    margin: calc(var(--spacing-unit) * 3);
+  }
+  
+  /* Brand-specific utilities */
+  .brand-shadow {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .brand-transition {
+    transition: var(--transition-default);
+  }
+  
+  .brand-transition-fast {
+    transition: var(--transition-fast);
+  }
+  
+  /* Interactive states */
+  .hover-lift {
+    @apply brand-transition;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Focus states for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+}
